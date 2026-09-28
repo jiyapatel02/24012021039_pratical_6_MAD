@@ -1,5 +1,6 @@
 package com.example.a24012021039_pratical_6_mad
 
+import android.content.Intent
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.view.animation.Animation
@@ -23,23 +24,26 @@ class SplashActivity : AppCompatActivity(), Animation.AnimationListener {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        inglogo=findViewById(R.id.ingLogo)
+        inglogo = findViewById(R.id.ingLogo)
         inglogo.setBackgroundResource(R.drawable.uvpce_animation_list)
-        guniframeanimation=inglogo.background as AnimationDrawable
-        gunianimation= AnimationUtils.loadAnimation(this,R.anim.twinanimation)
+        guniframeanimation = inglogo.background as AnimationDrawable
+        gunianimation = AnimationUtils.loadAnimation(this, R.anim.twinanimation)
         gunianimation.setAnimationListener(this)
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
-        if (hasFocus){
+        if (hasFocus) {
             guniframeanimation.start()
             inglogo.startAnimation(gunianimation)
+        } else {
+            guniframeanimation.stop()
         }
-        else guniframeanimation.stop()
     }
 
     override fun onAnimationEnd(animation: Animation?) {
+        Intent(this, MainActivity::class.java).also { startActivity(it) }
+        finish()
     }
 
     override fun onAnimationRepeat(animation: Animation?) {
