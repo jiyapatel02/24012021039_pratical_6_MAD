@@ -1,14 +1,16 @@
 package com.example.a24012021039_pratical_6_mad
 
+import android.content.Intent
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
+import android.view.animation.Animation
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), Animation.AnimationListener {
     private lateinit var alarmImage: ImageView
     private lateinit var heartImage: ImageView
     private lateinit var alarmAnimation: AnimationDrawable
@@ -44,5 +46,15 @@ class MainActivity : AppCompatActivity() {
             alarmAnimation.stop()
             heartAnimation.stop()
         }
+    }
+
+    override fun onAnimationEnd(animation: Animation?) {
+        Intent(this, MainActivity::class.java).also { startActivity(it) }
+    }
+
+    override fun onAnimationRepeat(animation: Animation?) {
+    }
+
+    override fun onAnimationStart(animation: Animation?) {
     }
 }
