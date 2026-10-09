@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -30,27 +31,29 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="435dp">
 
             <ImageView
-                android:id="@+id/topBg1"
+                android:id="@+id/alarmImage"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/alarm_animation_list"
-                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/alarm_animation_list"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
+
+
             <ImageView
                 android:id="@+id/imgHeart"
                 android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:contentDescription="Heart"
-                app:layout_constraintTop_toBottomOf="@id/txtDesc1"
-                app:layout_constraintEnd_toEndOf="parent" />
-
+                android:layout_height="25dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:scaleType="fitCenter"
+                android:background="@drawable/heart_animation_list"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtDesc1" />
 
             <TextView
                 android:id="@+id/txtTitle"
@@ -63,9 +66,8 @@
                 android:textColor="#212121"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/topBg1"
                 app:layout_constraintStart_toStartOf="parent"
-                />
+                app:layout_constraintTop_toBottomOf="@id/alarmImage" />
 
             <TextView
                 android:id="@+id/txtDesc"
@@ -73,22 +75,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="8dp"
-                android:textSize="17dp"
                 android:text="By pressing buttons, Alarm can be created and cancelled."
-                app:layout_constraintTop_toBottomOf="@id/txtTitle"
+                android:textSize="17dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/txtTitle" />
+
             <TextView
                 android:id="@+id/txtDesc1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="10dp"
-                android:textSize="17dp"
                 android:text="Check Current time by looking below real digit clock"
-                app:layout_constraintTop_toBottomOf="@id/txtDesc"
+                android:textSize="17dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/txtDesc" />
 
 
             <com.google.android.material.button.MaterialButton
@@ -96,13 +99,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:text="Create Alarm"
+                android:layout_marginStart="16dp"
                 android:backgroundTint="#59B2DE"
+                android:text="Create Alarm"
                 app:cornerRadius="25dp"
                 app:icon="@android:drawable/ic_lock_idle_alarm"
-                app:layout_constraintTop_toBottomOf="@id/txtDesc1"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/txtDesc1"
+                app:layout_constraintVertical_bias="0.915" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCancel"

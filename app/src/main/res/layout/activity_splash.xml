@@ -12,7 +12,7 @@
         android:layout_height="120dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:id="@+id/ingLogo">
+        android:id="@+id/imgLogo">
     </ImageView>
 
 

@@ -8,13 +8,14 @@ import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.motion.widget.Animatable
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class SplashActivity : AppCompatActivity(), Animation.AnimationListener {
-    lateinit var guniframeanimation: AnimationDrawable
-    lateinit var inglogo: ImageView
-    lateinit var gunianimation: Animation
+class SplashActivity : AppCompatActivity() , Animation.AnimationListener{
+    lateinit var guniFrameAnimation: AnimationDrawable
+    lateinit var imgLogo: ImageView
+    lateinit var guniAnimation: Animation
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -24,26 +25,26 @@ class SplashActivity : AppCompatActivity(), Animation.AnimationListener {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        inglogo = findViewById(R.id.ingLogo)
-        inglogo.setBackgroundResource(R.drawable.uvpce_animation_list)
-        guniframeanimation = inglogo.background as AnimationDrawable
-        gunianimation = AnimationUtils.loadAnimation(this, R.anim.twinanimation)
-        gunianimation.setAnimationListener(this)
+        imgLogo = findViewById<ImageView>(R.id.imgLogo)
+        imgLogo.setBackgroundResource(R.drawable.uvpce_animation_list)
+        guniFrameAnimation = imgLogo.background as AnimationDrawable
+        guniAnimation = AnimationUtils.loadAnimation(this, R.anim.twinanimation)
+        guniAnimation.setAnimationListener(this)
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
-        if (hasFocus) {
-            guniframeanimation.start()
-            inglogo.startAnimation(gunianimation)
-        } else {
-            guniframeanimation.stop()
+        if (hasFocus){
+            guniFrameAnimation.start()
+            imgLogo.startAnimation(guniAnimation)
+        }
+        else{
+            guniFrameAnimation.stop()
         }
     }
 
     override fun onAnimationEnd(animation: Animation?) {
         Intent(this, MainActivity::class.java).also { startActivity(it) }
-        finish()
     }
 
     override fun onAnimationRepeat(animation: Animation?) {
